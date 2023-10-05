@@ -1,0 +1,37 @@
+.green{
+    background-color: #198754;
+}
+.red{
+    background-color: #dc3545;
+}
+.button-group {
+    display: flex;
+    overflow:visible;
+  }
+  
+  .button {
+    background-color: #0074d9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Add transition for transform and opacity */
+    margin-right: 10px; /* Add spacing between buttons */
+  }
+  
+  /* Define an animation for the slide effect */
+  @keyframes slideRightToLeft {
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .slide-animation {
+    animation: slideRightToLeft .5s ease forwards; /* Apply the animation */
+  }
+  

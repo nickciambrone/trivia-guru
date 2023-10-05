@@ -12,7 +12,7 @@ function ColorSchemesExample() {
     
       <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Trivia Guru</Navbar.Brand>
+          <Navbar.Brand href="/">Guru</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#features"><IconClipboardData/></Nav.Link>
             <Nav.Link href="#howtoplay"><IconQuestionCircle/></Nav.Link>

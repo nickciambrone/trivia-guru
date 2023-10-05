@@ -4,10 +4,20 @@ import './main-menu.styles.scss';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from "react-router-dom";
+
 export const MainMenu = () => {
+    const navigate = useNavigate();
+
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = (category) => {
+        setShow(false);
+        if (category.length>4){
+            navigate(category.toLowerCase().replace(' ','_'))
+
+        }
+    }
     const handleShow = () => setShow(true);
     const [category, setCategory] = useState('General')
   
@@ -21,14 +31,14 @@ export const MainMenu = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Begin Round</Modal.Title>
+          <Modal.Title>  Category: <span style ={{color:'#0e6efd'}}>{category}</span> </Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you wanto to start {category} </Modal.Body>
+        <Modal.Body>Press Continue to start.   </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={()=>handleClose(category)}>
             Continue
           </Button>
         </Modal.Footer>

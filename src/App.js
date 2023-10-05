@@ -1,10 +1,12 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import { MainMenu } from './components/main-menu/main-menu.component';
 import NavExample from './components/navbar/navbar.component';
+import { Route, Routes } from 'react-router-dom';
+import Quiz from './components/quiz/quiz.component';
 
 function App() {
   return (
@@ -12,7 +14,14 @@ function App() {
       <div className = 'nav-container' style={{textAlign:'center'}}>
       <NavExample/>
       </div>
-      <MainMenu />
+      <div className='main-content-area'>
+      <Routes>
+        <Route  path="/" element={<MainMenu />}/>
+
+          <Route path="/*" element={<Quiz />} />
+      </Routes>
+      </div>
+   
     </div>
   );
 }

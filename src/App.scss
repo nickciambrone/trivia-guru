@@ -1,0 +1,17 @@
+
+@media (max-width:450px){
+    .main-content-area{
+        width:94%;
+        margin-left:3%
+    }
+}
+
+@media (min-width:450px) and (max-width:1000px){
+
+}
+@media (min-width:1000px){
+.main-content-area{
+    width:40%;
+    margin-left:30%
+}
+}
