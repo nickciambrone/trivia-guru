@@ -7,12 +7,18 @@ const Quiz = () => {
 
 
     let category = window.location.pathname.replace('/','')
-    let results = {}
+    let results = {'general':[]}
     Object.keys(quiz).forEach((cat,ind)=>{
-        results[cat] = {}
+        if (cat!='general'){
+            results[cat] = {}
+
+        }
+        results['all_'+cat]=[]
     })
-    Object.keys(results).forEach((cat,ind)=>{
+    
+    Object.keys(quiz).forEach((cat,ind)=>{
         Object.keys(quiz[cat]).forEach((subCat,ind)=>{
+            if (cat!='general' && subCat.includes('all_')==false)
             results[cat][subCat] = []
         })
     })
@@ -58,32 +64,25 @@ const Quiz = () => {
     })
     // if it is general
     if (category == 'general'){
-        let numOfCategories = Object.keys(quiz).length
-        let randomCategory = Object.keys(quiz)[Math.floor(Math.random()*numOfCategories)]
-        let numOfSubCats = Object.keys(quiz[randomCategory]).length
-        let randomSubCat = Object.keys(quiz[randomCategory])[Math.floor(Math.random() * numOfSubCats)]
-        let randomQuestionNumber = Math.floor(Math.random()*quiz[randomCategory][randomSubCat].length)
-        questionString = quiz[randomCategory][randomSubCat][randomQuestionNumber]['question']
-        choices = quiz[randomCategory][randomSubCat][randomQuestionNumber]['choices']
-        correct = quiz[randomCategory][randomSubCat][randomQuestionNumber]['correct']
+        console.log(quizResults)
+        questionString = quiz['general'][quizResults['general'].length]['question']
+        choices = quiz['general'][quizResults['general'].length]['choices']
+        correct = quiz['general'][quizResults['general'].length]['correct']
 
     }
     // if it is a specific category but not specfic subcat
-    if (category.includes('all')){
-        category = category.replace('all_','')
-        let randomSubCat = Math.floor(Math.random()*Object.keys(quiz[category]).length) 
-        randomSubCat = Object.keys(quiz[category])[randomSubCat]
-        let randomQuestionNumber = Math.floor(Math.random()*quiz[category][randomSubCat].length)
-        questionString = quiz[category][randomSubCat][randomQuestionNumber]['question']
-        choices = quiz[category][randomSubCat][randomQuestionNumber]['choices']
-        correct = quiz[category][randomSubCat][randomQuestionNumber]['correct']
+    if (category.includes('all_')){
+            let newCat = category.split('_')[1]
+            questionString = quiz[newCat]['all'][quizResults['all_'+newCat].length]['question']
+            choices = quiz[newCat]['all'][quizResults['all_'+newCat].length]['choices']
+            correct = quiz[newCat]['all'][quizResults['all_'+newCat].length]['correct']
         }
     return (
         <div className = 'quiz-questions' >
             {category} <br />
             {/* if they picked a specific subcategory within a category*/}
             <QuizProgressBar results = {quizResults} category ={mainCategory} subCategory = {category}/>
-            <QuizQuestion category ={mainCategory} subCategory = {category} quizResults={quizResults} setQuizResults = {setQuizResults}  question = {questionString} choices = {choices} correct={ correct}/>
+            <QuizQuestion keyForHistory = {window.location.pathname.replace('/','')} category ={mainCategory} subCategory = {category} quizResults={quizResults} setQuizResults = {setQuizResults}  question = {questionString} choices = {choices} correct={ correct}/>
         
         </div>
     )

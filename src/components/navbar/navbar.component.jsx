@@ -20,8 +20,8 @@ function ColorSchemesExample() {
 
           </Nav>
           <Nav>
-          <Nav.Link href="#account" ><IconAccountCircleOutline/>
-</Nav.Link>
+          {/* <Nav.Link href="#account" ><IconAccountCircleOutline/>
+</Nav.Link> */}
 
           </Nav>
 

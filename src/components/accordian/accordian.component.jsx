@@ -36,7 +36,7 @@ function CategoryAccordian(props) {
       })}
 
       <Accordion.Item eventKey="5">
-        <Card bg='primary' style={{ color: 'white', cursor: 'pointer', fontWeight: '500' }} onClick={() => selectCategory('General')}><Card.Header>
+        <Card bg='primary' style={{ color: 'white', cursor: 'pointer', fontWeight: '500', marginTop:'8px' }} onClick={() => selectCategory('General')}><Card.Header>
           General (All Categories) {<IconPlayCircle />}
 
         </Card.Header></Card>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './quiz-question.scss';
-const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults, category, subCategory }) => {
+const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResults, quizResults, category, subCategory }) => {
 
     const [answerDecision, setAnswerDecision] = useState('no answer yet')
     const [slideOut, setSlideOut] = useState(false);
@@ -15,9 +15,19 @@ const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults,
 
         }
         setTimeout(() => {
+            console.log(quizResults)
+            console.log(keyForHistory)
+            if (keyForHistory.includes('general')){
+                console.log('test')
+                setQuizResults({...quizResults,'general':[...quizResults['general'], isCorrect]})
+            }
+            else if (keyForHistory.includes('all_')){
+                setQuizResults({...quizResults,[keyForHistory]:[...quizResults[keyForHistory], isCorrect]})
 
+            }else{
+                setQuizResults({...quizResults,[category]:{...quizResults[category], [subCategory]:[...quizResults[category][subCategory], isCorrect]} })
 
-            setQuizResults({...quizResults,[category]:{...quizResults[category], [subCategory]:[...quizResults[category][subCategory], isCorrect]} })
+            }
             console.log(quizResults)
 
             setAnswerDecision('no answer yet')
@@ -79,8 +89,6 @@ const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults,
                         }
 
                     })}</div></div>
-            <br />
-            quiz correct: {correct}
 
         </div>
     )
