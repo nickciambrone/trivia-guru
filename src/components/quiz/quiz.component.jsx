@@ -7,9 +7,17 @@ const Quiz = () => {
 
 
     let category = window.location.pathname.replace('/','')
-    let results = []
+    let results = {}
+    Object.keys(quiz).forEach((cat,ind)=>{
+        results[cat] = {}
+    })
+    Object.keys(results).forEach((cat,ind)=>{
+        Object.keys(quiz[cat]).forEach((subCat,ind)=>{
+            results[cat][subCat] = []
+        })
+    })
     if (localStorage.getItem('results')){
-        results = localStorage.getItem('results').split(',')
+        results = JSON.parse(localStorage.getItem('results'))
     }
     let [quizResults, setQuizResults] = useState(results)
    
@@ -19,19 +27,24 @@ const Quiz = () => {
 
     useEffect(() => {
         // storing input name
-        localStorage.setItem("results", quizResults);
+        localStorage.setItem("results", JSON.stringify(quizResults));
 
       }, [quizResults]);
   
-
+    let mainCategory = ''
     // if it is a specific subcategory
     Object.keys(quiz).forEach((cat, catInd)=>{
+
         Object.keys(quiz[cat]).forEach((subCat, subCatInd)=>{
+
             if (subCat == category){
-                if (quizResults.length != quiz[cat][subCat].length){
-                    questionString = quiz[cat][subCat][quizResults.length]['question']
-                    choices = quiz[cat][category][quizResults.length]['choices']
-                    correct = quiz[cat][subCat][quizResults.length]['correct']
+        
+
+                mainCategory = cat
+                if (quizResults[cat][subCat].length != quiz[cat][subCat].length){
+                    questionString = quiz[cat][subCat][quizResults[cat][subCat].length]['question']
+                    choices = quiz[cat][category][quizResults[cat][subCat].length]['choices']
+                    correct = quiz[cat][subCat][quizResults[cat][subCat].length]['correct']
                 }
                 else{
                     questionString = 'your done'
@@ -65,13 +78,12 @@ const Quiz = () => {
         choices = quiz[category][randomSubCat][randomQuestionNumber]['choices']
         correct = quiz[category][randomSubCat][randomQuestionNumber]['correct']
         }
-  
     return (
         <div className = 'quiz-questions' >
             {category} <br />
             {/* if they picked a specific subcategory within a category*/}
-            <QuizProgressBar results = {quizResults} />
-            <QuizQuestion quizResults={quizResults} setQuizResults = {setQuizResults}  question = {questionString} choices = {choices} correct={ correct}/>
+            <QuizProgressBar results = {quizResults} category ={mainCategory} subCategory = {category}/>
+            <QuizQuestion category ={mainCategory} subCategory = {category} quizResults={quizResults} setQuizResults = {setQuizResults}  question = {questionString} choices = {choices} correct={ correct}/>
         
         </div>
     )

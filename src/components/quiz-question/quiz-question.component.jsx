@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './quiz-question.scss';
-const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults }) => {
+const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults, category, subCategory }) => {
 
     const [answerDecision, setAnswerDecision] = useState('no answer yet')
     const [slideOut, setSlideOut] = useState(false);
     const [selectedButton, setSelectedButton] = useState(null);
-
     const handleButtonClick = (userAnswer) => {
         let isCorrect = false
 
@@ -18,9 +17,8 @@ const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults 
         setTimeout(() => {
 
 
-
-            setQuizResults([...quizResults, isCorrect])
-
+            setQuizResults({...quizResults,[category]:{...quizResults[category], [subCategory]:[...quizResults[category][subCategory], isCorrect]} })
+            console.log(quizResults)
 
             setAnswerDecision('no answer yet')
 
