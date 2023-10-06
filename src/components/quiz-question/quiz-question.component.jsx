@@ -1,40 +1,51 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './quiz-question.scss';
-const QuizQuestion = ({ question, choices, correct, setCurrentQuestion, currentQuestion }) => {
+const QuizQuestion = ({ question, choices, correct, setQuizResults, quizResults }) => {
 
     const [answerDecision, setAnswerDecision] = useState('no answer yet')
     const [slideOut, setSlideOut] = useState(false);
     const [selectedButton, setSelectedButton] = useState(null);
 
-    const handleButtonClick = (buttonId) => {
-        setTimeout(()=>{
-            setAnswerDecision('no answer yet')
+    const handleButtonClick = (userAnswer) => {
+        let isCorrect = false
 
-            setCurrentQuestion(currentQuestion + 1)
+
+        if (correct == userAnswer) {
+            isCorrect = true
+
+        }
+        setTimeout(() => {
+
+
+
+            setQuizResults([...quizResults, isCorrect])
+
+
+            setAnswerDecision('no answer yet')
 
             setSlideOut(true); // Add the class to trigger the slide-out animation
 
-        },500)
+
+        }, 1000)
         setTimeout(() => {
 
             setSlideOut(false); // Add the class to trigger the slide-out animation
-
-        }, 1000); // Wait for one second before transitioning
+        }, 2000); // Wait for one second before transitioning
 
     };
-    const checkAnswer =  (userAnswer) => {
+    const checkAnswer = (userAnswer) => {
         if (correct == userAnswer) {
-             setAnswerDecision(true)
+            setAnswerDecision(true)
 
         }
         else {
-             setAnswerDecision(userAnswer)
+            setAnswerDecision(userAnswer)
 
         }
-        handleButtonClick();
+        handleButtonClick(userAnswer);
 
-   
+
 
     }
 
@@ -42,9 +53,10 @@ const QuizQuestion = ({ question, choices, correct, setCurrentQuestion, currentQ
 
     return (
         <div className='quiz-question' style={{ textAlign: 'center' }}>
+
             quiz question: {question} <br />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div className={`button-group ${slideOut ? 'slide-animation' : ''}`} style={{display:'flex', flexDirection:'column'}}>
+                <div className={`button-group ${slideOut ? 'slide-animation' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
                     {choices.map((ele, ind) => {
                         if (ind === correct) {
                             return (
@@ -63,7 +75,7 @@ const QuizQuestion = ({ question, choices, correct, setCurrentQuestion, currentQ
                                         backgroundColor: answerDecision === ind ? '#dc3545' : '',
                                         transform: answerDecision === ind ? 'scale(1.05)' : ''
                                     }}>
-                                    {ele} 
+                                    {ele}
                                 </Button>
                             )
                         }
