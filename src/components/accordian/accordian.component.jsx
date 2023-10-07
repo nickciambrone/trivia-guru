@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import IconPlayCircle from '../icons/play';
 import categories from './categories'
+import IconPumpkin from '../icons/pumpkin';
 
 function CategoryAccordian(props) {
 
@@ -25,7 +26,7 @@ function CategoryAccordian(props) {
 
               {categories[ele].map((elem, ind) => {
                 return (
-                  <li><Button variant="light" style={{ width: '100%' }} onClick={() => selectCategory(elem)}>{elem}</Button></li>
+                  <li><Button variant="light" style={{ width: '100%' }} onClick={() => selectCategory(elem)}>{elem == 'Halloween' ? <IconPumpkin/> : ''} {elem} {elem == 'Halloween' ? <IconPumpkin/> : ''}</Button></li>
 
                 )
               })}

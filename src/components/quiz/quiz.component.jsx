@@ -5,6 +5,10 @@ import QuizProgressBar from '../quiz-progress bar/quiz-progress-bar.component';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
+
+
+
 
 const Quiz = () => {
     const navigate = useNavigate();
@@ -72,7 +76,6 @@ const Quiz = () => {
 
 
                 mainCategory = cat
-                {console.log(quizResults)}
                 relevantQuizResults = quizResults[today][cat][subCat]
 
                 if (quizResults[today][cat][subCat].length != quiz[cat][subCat].length) {
@@ -135,9 +138,34 @@ const Quiz = () => {
                         {relevantQuizResults.length > 0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) : ''}/10
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ padding: '20px' }}> </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={() => navigate('/')} style={{ width: '50%' }}>Go home</Button>
+                <Modal.Body style={{ padding: '20px' }}>
+                   <div style={{marginBottom:'3px'}}>Past scores for <span style={{ color: '#0e6efd' }}>{category.replace('_', ' ')}:</span></div> 
+                {category.includes('all_') || category == 'general' ? 
+                <div>
+                  {Object.keys(quizResults).map((day,ind)=>{
+                    return (<div>
+{quizResults[day][category].length>1 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}>{day.replaceAll('/','-')}: <b style={{marginLeft:'4px'}}>{ quizResults[day][category].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })+'/10'}</b> </Card.Body></Card>      :''                 } {/* {Object.keys(quizResults[day]).map((cat, inde)=>{
+                            return Object.keys(quizResults[day][cat]).map((subCat,inex)=>  <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}> {day.replaceAll('/','-')}:<b style={{marginLeft:'8px'}}>{ quizResults[day][cat].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10</b> </Card.Body></Card>)
+                        })} */}
+         
+                    </div>)
+                })}  
+                </div> : ''}
+                
+                {Object.keys(quizResults).map((day,ind)=>{
+                    return (<div>
+                        
+                         {Object.keys(quizResults[day]).map((cat, inde)=>{
+                            return Object.keys(quizResults[day][cat]).map((subCat,inex)=>subCat == category ? quizResults[day][cat][subCat].length>0 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}> {day.replaceAll('/','-')}:<b style={{marginLeft:'4px'}}>{ quizResults[day][cat][subCat].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10</b> </Card.Body></Card>:'':'')
+                        })}
+         
+                    </div>)
+                })}
+                     </Modal.Body>
+                <Modal.Footer style={{justifyContent:'space-evenly', flexDirection:'row'}}>
+                <Button onClick={() => navigate('/')} style={{ width: '45%' }}>My Stats</Button>
+
+                    <Button onClick={() => navigate('/')} style={{ width: '45%' }}>Go home</Button>
 
                 </Modal.Footer>
             </Modal>
