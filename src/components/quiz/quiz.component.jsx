@@ -37,21 +37,30 @@ const Quiz = () => {
                 results[today][cat][subCat] = []
         })
     })
+    let todaysBlankResults = results
     if (localStorage.getItem('results')) {
         results = JSON.parse(localStorage.getItem('results'))
+        if (!Object.keys(results).includes(today)){
+            results = {...results, [today]:todaysBlankResults[today]}
+        }
     }
     let [quizResults, setQuizResults] = useState(results)
-    console.log(quizResults)
-
     let questionString = ''
     let choices = []
     let correct = []
 
     useEffect(() => {
+
         // storing input name
         localStorage.setItem("results", JSON.stringify(quizResults));
 
     }, [quizResults]);
+
+
+
+
+
+
 
     let mainCategory = ''
     // if it is a specific subcategory
@@ -63,6 +72,7 @@ const Quiz = () => {
 
 
                 mainCategory = cat
+                {console.log(quizResults)}
                 relevantQuizResults = quizResults[today][cat][subCat]
 
                 if (quizResults[today][cat][subCat].length != quiz[cat][subCat].length) {
@@ -122,7 +132,7 @@ const Quiz = () => {
                         <span style={{ marginRight: '4px' }}>
                             Today's Score:
                         </span>
-                        {relevantQuizResults.length>0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) :''}/10
+                        {relevantQuizResults.length > 0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) : ''}/10
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: '20px' }}> </Modal.Body>
