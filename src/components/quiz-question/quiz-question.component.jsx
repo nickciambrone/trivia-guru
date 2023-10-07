@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './quiz-question.scss';
 const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResults, quizResults, category, subCategory }) => {
-
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    today = mm + '/' + dd + '/' + yyyy;
     const [answerDecision, setAnswerDecision] = useState('no answer yet')
     const [slideOut, setSlideOut] = useState(false);
     const [selectedButton, setSelectedButton] = useState(null);
@@ -15,20 +20,21 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
 
         }
         setTimeout(() => {
-            console.log(quizResults)
-            console.log(keyForHistory)
+
             if (keyForHistory.includes('general')){
-                console.log('test')
-                setQuizResults({...quizResults,'general':[...quizResults['general'], isCorrect]})
+                setQuizResults({...quizResults,[today]:{...quizResults[today], 'general':[...quizResults[today]['general'], isCorrect]}})
+                // setQuizResults({...quizResults,'general':[...quizResults['general'], isCorrect]})
             }
             else if (keyForHistory.includes('all_')){
-                setQuizResults({...quizResults,[keyForHistory]:[...quizResults[keyForHistory], isCorrect]})
+                setQuizResults({...quizResults,[today]:{...quizResults[today], [keyForHistory]:[...quizResults[today][keyForHistory], isCorrect]}})
+
 
             }else{
-                setQuizResults({...quizResults,[category]:{...quizResults[category], [subCategory]:[...quizResults[category][subCategory], isCorrect]} })
+                setQuizResults({...quizResults,[today]:{...quizResults[today],[category]:{...quizResults[today][category], [keyForHistory]:[...quizResults[today][category][keyForHistory],isCorrect]} } })
+
+                // setQuizResults({...quizResults,[category]:{...quizResults[category], [subCategory]:[...quizResults[category][subCategory], isCorrect]} })
 
             }
-            console.log(quizResults)
 
             setAnswerDecision('no answer yet')
 
@@ -70,7 +76,9 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
                             return (
                                 <Button onClick={() => checkAnswer(ind)}
                                     style={{
-                                        marginBottom: '6px',
+                                        paddingTop:'12px', 
+                                        paddingBottom:'12px',
+                                        marginBottom: '10px',
                                         backgroundColor: answerDecision != 'no answer yet' ? '#198754' : '', transform: answerDecision != 'no answer yet' ? 'scale(1.05)' : ''
                                     }}>{ele}</Button>
                             )
@@ -79,9 +87,11 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
                             return (
                                 <Button onClick={() => checkAnswer(ind)}
                                     style={{
-                                        marginBottom: '6px', transition: 'all 0.3s ease',
+                                        marginBottom: '10px', transition: 'all 0.3s ease',
                                         backgroundColor: answerDecision === ind ? '#dc3545' : '',
-                                        transform: answerDecision === ind ? 'scale(1.05)' : ''
+                                        transform: answerDecision === ind ? 'scale(1.05)' : '',
+                                        paddingTop:'12px', 
+                                        paddingBottom:'12px'
                                     }}>
                                     {ele}
                                 </Button>

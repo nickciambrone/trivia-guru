@@ -114,7 +114,7 @@ const quiz = {
             {'question':'10 what is a song by j cole', 'choices':['to be','no role models','take care','trap house'], 'correct':1},
 
         ],
-        'hip_hop': 
+        'ww1': 
         [
             {'question':'1 what is a song by eminem', 'choices':['when im gone','fruit','take care','trap house'], 'correct':0},
             {'question':'2 what is a song by wayne', 'choices':['true','lollipop','big song','night'], 'correct':1},
@@ -129,7 +129,7 @@ const quiz = {
 
         ]
         ,
-        'country': 
+        'rome': 
         [
             {'question':'1 what is a song by luke bryant', 'choices':['whiskey','wrong 2','w3','eh not right'], 'correct':0},
             {'question':'2 what is a song by country jimmy', 'choices':['true live','jimmys song','the song','good day'], 'correct':1},
@@ -161,7 +161,7 @@ const quiz = {
             {'question':'10 what is a song by j cole', 'choices':['to be','no role models','take care','trap house'], 'correct':1},
 
         ],
-        'hip_hop': 
+        'movies': 
         [
             {'question':'1 what is a song by eminem', 'choices':['when im gone','fruit','take care','trap house'], 'correct':0},
             {'question':'2 what is a song by wayne', 'choices':['true','lollipop','big song','night'], 'correct':1},
@@ -176,7 +176,7 @@ const quiz = {
 
         ]
         ,
-        'country': 
+        'tv': 
         [
             {'question':'1 what is a song by luke bryant', 'choices':['whiskey','wrong 2','w3','eh not right'], 'correct':0},
             {'question':'2 what is a song by country jimmy', 'choices':['true live','jimmys song','the song','good day'], 'correct':1},
@@ -208,7 +208,7 @@ const quiz = {
             {'question':'10 what is a song by j cole', 'choices':['to be','no role models','take care','trap house'], 'correct':1},
 
         ],
-        'hip_hop': 
+        'marvel': 
         [
             {'question':'1 what is a song by eminem', 'choices':['when im gone','fruit','take care','trap house'], 'correct':0},
             {'question':'2 what is a song by wayne', 'choices':['true','lollipop','big song','night'], 'correct':1},
@@ -223,7 +223,7 @@ const quiz = {
 
         ]
         ,
-        'country': 
+        'fantasy_football': 
         [
             {'question':'1 what is a song by luke bryant', 'choices':['whiskey','wrong 2','w3','eh not right'], 'correct':0},
             {'question':'2 what is a song by country jimmy', 'choices':['true live','jimmys song','the song','good day'], 'correct':1},
@@ -255,7 +255,7 @@ const quiz = {
             {'question':'10 what is a song by j cole', 'choices':['to be','no role models','take care','trap house'], 'correct':1},
 
         ],
-        'hip_hop': 
+        'chemistry': 
         [
             {'question':'1 what is a song by eminem', 'choices':['when im gone','fruit','take care','trap house'], 'correct':0},
             {'question':'2 what is a song by wayne', 'choices':['true','lollipop','big song','night'], 'correct':1},
@@ -270,7 +270,7 @@ const quiz = {
 
         ]
         ,
-        'country': 
+        'bio': 
         [
             {'question':'1 what is a song by luke bryant', 'choices':['whiskey','wrong 2','w3','eh not right'], 'correct':0},
             {'question':'2 what is a song by country jimmy', 'choices':['true live','jimmys song','the song','good day'], 'correct':1},
