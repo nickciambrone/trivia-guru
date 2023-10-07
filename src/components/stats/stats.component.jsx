@@ -8,7 +8,7 @@ const Stats = () => {
         <div className='stats'>
             {results ?
                 <div> {Object.keys(results).map((day) =>
-                    <Card style={{marginTop:'6px', padding:'10px'}}><span>{day}</span><span>
+                    <Card style={{marginTop:'6px', padding:'10px'}}><Card.Title>{day}</Card.Title><span>
                         {Object.keys(results[day]).map((scores) =>
                             <div>{results[day][scores].length > 0 ?
                                 <div><span style={{ textTransform: 'capitalize', marginRight:'5px' }}>{scores.replace('_', ' ')}:
