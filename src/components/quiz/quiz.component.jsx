@@ -122,7 +122,7 @@ const Quiz = () => {
                         <span style={{ marginRight: '4px' }}>
                             Today's Score:
                         </span>
-                        {relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10
+                        {relevantQuizResults.length>0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) :''}/10
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: '20px' }}> </Modal.Body>

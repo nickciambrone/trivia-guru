@@ -4,7 +4,7 @@ import * as React from "react";
 function IconXCircle(props) {
   return (
     <svg
-      fill="currentColor"
+      fill="#dc3545"
       viewBox="0 0 16 16"
       height="1em"
       width="1em"
