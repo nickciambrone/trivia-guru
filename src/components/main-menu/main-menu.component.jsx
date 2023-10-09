@@ -15,7 +15,7 @@ export const MainMenu = () => {
 
     const handleClose = (category) => {
         setShow(false);
-        if (category.length>4){
+        if (category.length>2){
             navigate(category.toLowerCase().replace(' ','_'))
 
         }
