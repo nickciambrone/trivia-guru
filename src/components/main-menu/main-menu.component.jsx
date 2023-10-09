@@ -25,7 +25,7 @@ export const MainMenu = () => {
   
     return (
         <div className='main-menu' style={{ textAlign: 'center' }}>
-            <div className='accordian-container'>
+            <div className='accordian-container' style={{marginTop:'8px'}}>
                 <CategoryAccordian setCategory = {setCategory} showModal = {handleShow} text='Music' subcategories = {['All Music', 'Hip-Hop', 'Country', 'Classic Rock', 'Pop']}/>
                 
             </div>

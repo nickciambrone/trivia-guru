@@ -12,7 +12,7 @@ const QuizProgressBar = ({ results, category, subCategory }) => {
     today = mm + '/' + dd + '/' + yyyy;
     let urlParam = window.location.pathname.replace('/', '')
     return (
-        <div className='quiz-progress-bar' style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className='quiz-progress-bar' style={{ display: 'flex', justifyContent: 'center', marginTop:"2px" }}>
             {
                 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((ele, ind) => {
                     return (<div style={{ marginRight: '3px' }}>
