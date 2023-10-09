@@ -8,10 +8,15 @@ import NavExample from './components/navbar/navbar.component';
 import { Route, Routes } from 'react-router-dom';
 import Quiz from './components/quiz/quiz.component';
 import Stats from './components/stats/stats.component';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(()=>{  document.title = 'Trivia Battle';
+},[])
+
   return (
     <div className="App">
+
       <div className = 'nav-container' style={{textAlign:'center'}}>
       <NavExample/>
       </div>
@@ -23,7 +28,6 @@ function App() {
           <Route path="/*" element={<Quiz />} />
       </Routes>
       </div>
-   
     </div>
   );
 }
