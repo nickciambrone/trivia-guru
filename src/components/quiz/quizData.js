@@ -78,7 +78,7 @@ const quiz = {
             {'question':'3 who has played for the chiefs and steelers', 'choices':['kelce','juju','AB','lamar'], 'correct':0},
             {'question':'4 who is the last packers mvp', 'choices':['rodgers','mahomes','brady','russ'], 'correct':0},
             {'question':'5 how many super bowls does mahomes have', 'choices':['1','2','3','4'], 'correct':1},
-            {'question':'6 who has played for the chiefs and steelers', 'choices':['kelce','juju','AB','lamar'], 'correct':0},            {'question':'1 who is the last packers mvp', 'choices':['rodgers','mahomes','brady','russ'], 'correct':0},
+            {'question':'6 who has played for the chiefs and steelers', 'choices':['kelce','juju','AB','lamar'], 'correct':0},         
             {'question':'7 how many super bowls does mahomes have', 'choices':['1','2','3','4'], 'correct':1},
             {'question':'8 who has played for the chiefs and steelers', 'choices':['kelce','juju','AB','lamar'], 'correct':0},
             {'question':'9 who has played for the chiefs and steelers', 'choices':['kelce','juju','AB','lamar'], 'correct':0},

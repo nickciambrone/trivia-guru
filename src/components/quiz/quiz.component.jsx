@@ -79,7 +79,10 @@ const Quiz = () => {
                 relevantQuizResults = quizResults[today][cat][subCat]
 
                 if (quizResults[today][cat][subCat].length != quiz[cat][subCat].length) {
+                    console.log(quiz[cat][subCat])
+                    console.log(quizResults[today][cat][subCat].length)
                     questionString = quiz[cat][subCat][quizResults[today][cat][subCat].length]['question']
+                    console.log(questionString)
                     choices = quiz[cat][category][quizResults[today][cat][subCat].length]['choices']
                     correct = quiz[cat][subCat][quizResults[today][cat][subCat].length]['correct']
                 }
@@ -123,7 +126,7 @@ const Quiz = () => {
     }
     return (
         <div className='quiz-questions' >
-            {category} <br />
+            <div style={{textAlign:'center', textTransform:'capitalize'}}>{category.replace('_',' ')} Trivia:</div> 
             {/* if they picked a specific subcategory within a category*/}
             <QuizProgressBar results={quizResults} category={mainCategory} subCategory={category} />
             <QuizQuestion keyForHistory={window.location.pathname.replace('/', '')} category={mainCategory} subCategory={category} quizResults={quizResults} setQuizResults={setQuizResults} question={questionString} choices={choices} correct={correct} />
@@ -163,7 +166,7 @@ const Quiz = () => {
                 })}
                      </Modal.Body>
                 <Modal.Footer style={{justifyContent:'space-evenly', flexDirection:'row'}}>
-                <Button onClick={() => navigate('/')} style={{ width: '45%' }}>My Stats</Button>
+                <Button onClick={() => navigate('/stats')} style={{ width: '45%' }}>My Stats</Button>
 
                     <Button onClick={() => navigate('/')} style={{ width: '45%' }}>Go home</Button>
 

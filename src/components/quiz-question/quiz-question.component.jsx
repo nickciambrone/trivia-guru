@@ -41,11 +41,11 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
             setSlideOut(true); // Add the class to trigger the slide-out animation
 
 
-        }, 1000)
+        }, 1500)
         setTimeout(() => {
 
             setSlideOut(false); // Add the class to trigger the slide-out animation
-        }, 2000); // Wait for one second before transitioning
+        }, 3000); // Wait for one second before transitioning
 
     };
     const checkAnswer = (userAnswer) => {
@@ -68,7 +68,7 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
     return (
         <div className='quiz-question' style={{ textAlign: 'center' }}>
 
-            quiz question: {question} <br />
+            Question {question.split(' ')[0]}: {question.split(' ').slice(1, question.split(' ').length).join(' ')} <br />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={`button-group ${slideOut ? 'slide-animation' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
                     {choices.map((ele, ind) => {
