@@ -13,28 +13,31 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
         }, "2000");
     }, [copySuccess])
     const navigate = useNavigate();
-
+    console.log(category)
+    const relevantScore = relevantQuizResults.length > 0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) : ''
     return (
         <div className = 'quiz-results'>
                 <Modal show={done}  >
                 <Modal.Header >
                     <Modal.Title>  Category: <span style={{ color: '#0e6efd' }}>{category.replace('_', ' ')}</span>
                         <br />
-                        <span style={{ marginRight: '4px' }}>
-                            Today's Score:
-                        </span>
-                        {relevantQuizResults.length > 0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) : ''}/10
+                       
                         <div>
                         <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px' }}
                                             onClick={() => {
-                                                navigator.clipboard.writeText('verse me in this! \n https://www.thefantasypools.com/' );
+                                                navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.netlify.app/'+category );
                                                 setCopySuccess('Copied!')
-                                            }}> Copy invite link</div><div>{copySuccess}</div>
+                                            }}> Copy Challenge Link</div><div>{copySuccess}</div>
                         </div>
                         
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: '20px' }}>
+                    <div style = {{fontSize:'20px', fontWeight:'600'}}> <span style={{ marginRight: '4px' }}>
+                            Today's Score:
+                        </span>
+                        {relevantQuizResults.length > 0 ? relevantQuizResults.reduce((acc, curr) => { return curr == true ? acc + 1 : acc }) : ''}/10</div>
+               
                    <div style={{marginBottom:'3px'}}>Past scores for <span style={{ color: '#0e6efd' }}>{category.replace('_', ' ')}:</span></div> 
                 {category.includes('all_') || category == 'general' ? 
                 <div>
