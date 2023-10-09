@@ -9,14 +9,13 @@
     overflow:visible;
   }
   
-  .button {
-    background-color: #0074d9;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.5s ease, opacity 0.5s ease; /* Add transition for transform and opacity */
-    margin-right: 10px; /* Add spacing between buttons */
+  .btn {
+    background-color: #0e6efd;
+
+    &:hover{
+      background-color: #0e6efd;
+
+    }
   }
   
   /* Define an animation for the slide effect */
