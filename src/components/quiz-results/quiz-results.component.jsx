@@ -25,7 +25,7 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
                         <div>
                         <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px' }}
                                             onClick={() => {
-                                                navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.netlify.app/'+category );
+                                                navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.triviabattle.io/'+category );
                                                 setCopySuccess('Copied!')
                                             }}> Copy Challenge Link</div><div>{copySuccess}</div>
                         </div>
