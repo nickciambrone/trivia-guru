@@ -72,7 +72,7 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
                     {choices.map((ele, ind) => {
                         if (ind === correct) {
                             return (
-                                <Button onClick={() => checkAnswer(ind)}
+                                <Button className = 'btn-qq' onClick={() => checkAnswer(ind)}
                                     style={{
                                         paddingTop:'12px', 
                                         paddingBottom:'12px',
@@ -83,7 +83,7 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
                         }
                         else {
                             return (
-                                <Button onClick={() => checkAnswer(ind)}
+                                <Button className = 'btn-qq' onClick={() => checkAnswer(ind)}
                                     style={{
                                         marginBottom: '10px', transition: 'all 0.3s ease',
                                         backgroundColor: answerDecision === ind ? '#dc3545' : '',
