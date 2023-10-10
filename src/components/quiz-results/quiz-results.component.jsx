@@ -4,9 +4,29 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import monthMapper from './monthMap';
 
 export const QuizResults = ({done, category, quizResults, relevantQuizResults}) =>{
+    const monthMapper=(inputDate)=>{
+        inputDate = new Date(inputDate)
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const day = inputDate.getDate();
+        const month = monthNames[inputDate.getMonth()];
+        const year = inputDate.getFullYear();
+    
+        let dayStr;
+        if (day === 1 || day === 21 || day === 31) {
+            dayStr = day + "st";
+        } else if (day === 2 || day === 22) {
+            dayStr = day + "nd";
+        } else if (day === 3 || day === 23) {
+            dayStr = day + "rd";
+        } else {
+            dayStr = day + "th";
+        }
+    
+        const formattedDate = `${month} ${dayStr} ${year}`;
+        return formattedDate;
+    }
     const [copySuccess, setCopySuccess] = useState('');
     useEffect(() => {
         setTimeout(() => {
