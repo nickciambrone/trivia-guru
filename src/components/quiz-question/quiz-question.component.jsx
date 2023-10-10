@@ -66,7 +66,7 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
 
     return (
         <div className='quiz-question' style={{ textAlign: 'center', marginTop:"2px" }}>
-            <div style={{marginBottom:'2px'}}><span style={{textTransform:'capitalize'}}>{subCategory.replaceAll('_',' ')}</span> question {question.split(' ')[0]}: {question.split(' ').slice(1, question.split(' ').length).join(' ')} </div>
+            <div style={{marginBottom:'2px'}}><span style={{textTransform:'capitalize'}}></span> Question {question.split(' ')[0]} {question.split(' ').slice(1, question.split(' ').length).join(' ')} </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={`button-group ${slideOut ? 'slide-animation' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
                     {choices.map((ele, ind) => {

@@ -1,5 +1,5 @@
 const categories = {
-    'Music':['Hip Hop', 'Country', 'EDM'],'Sports':['Football', 'Soccer', 'Basketball', 'Baseball'], 'History':['Ancient Rome', 'Ancient Greece', 'US History'], 'Science':['Chemistry', 'Phsyics', 'Biology', 'Atronomy'], 'Entertainment':['Art', 'Cinema', 'TV', 'Litrature'], 'Special':['Marvel', 'Fantasy Football', 'Harry Potter', 'Halloween' ]
+    'Music':['Hip Hop', 'Country', 'EDM'],'Sports':['Football', 'Soccer', 'Basketball'], 'History':['Ancient Rome', 'WWII', 'US History'], 'Science':['Chemistry', 'Physics', 'Biology'], 'Entertainment':['Cinema', 'TV', 'Literature'], 'Special':['Marvel',  'Harry Potter', 'Halloween' ]
   }
 
   export default categories;

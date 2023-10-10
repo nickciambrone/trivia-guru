@@ -22,7 +22,7 @@ function CategoryAccordian(props) {
             <Accordion.Body>
 
               <ul style={{ listStyleType: 'none', width: '100%', padding: '0px' }}>
-              <li><Button variant="light" style={{ width: '100%' }} onClick={() => selectCategory('All ' + ele)}>{'All '+ele}</Button></li>
+              <li>{ele.toLowerCase() != 'special' ? <Button variant="light" style={{ width: '100%' }} onClick={() => selectCategory('All ' + ele)}>{'All '+ele}</Button>:''}</li>
 
               {categories[ele].map((elem, ind) => {
                 return (

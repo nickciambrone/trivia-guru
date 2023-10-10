@@ -3,11 +3,7 @@
   "name": "Trivia Battle",
   "icons": [
    
-    {
-      "src": "school.jsx",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
+
   ],
   "start_url": ".",
   "display": "standalone",
