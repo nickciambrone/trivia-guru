@@ -11,7 +11,9 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
     const [answerDecision, setAnswerDecision] = useState('no answer yet')
     const [slideOut, setSlideOut] = useState(false);
     const [selectedButton, setSelectedButton] = useState(null);
+    const [done, setDone] = useState(true)
     const handleButtonClick = (userAnswer) => {
+        setDone(false)
         let isCorrect = false
 
 
@@ -39,25 +41,29 @@ const QuizQuestion = ({ keyForHistory, question, choices, correct, setQuizResult
             setAnswerDecision('no answer yet')
 
             setSlideOut(true); // Add the class to trigger the slide-out animation
+            setDone(true)
 
 
         }, 1500)
         setTimeout(() => {
 
             setSlideOut(false); // Add the class to trigger the slide-out animation
-        }, 3000); // Wait for one second before transitioning
 
+        }, 3000); // Wait for one second before transitioning
     };
     const checkAnswer = (userAnswer) => {
-        if (correct == userAnswer) {
-            setAnswerDecision(true)
-
+        if (done == true){
+            if (correct == userAnswer) {
+                setAnswerDecision(true)
+    
+            }
+            else {
+                setAnswerDecision(userAnswer)
+    
+            }
+            handleButtonClick(userAnswer);
         }
-        else {
-            setAnswerDecision(userAnswer)
-
-        }
-        handleButtonClick(userAnswer);
+        
 
 
 
