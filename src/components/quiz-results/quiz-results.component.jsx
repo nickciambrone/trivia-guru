@@ -20,15 +20,8 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
                 <Modal show={done}  >
                 <Modal.Header >
                     <Modal.Title style={{width:'100%'}}>  <span style={{ color: '#0e6efd', marginBottom:'2px' }}><span style={{color:'black'}}>Category:</span> {category.replace('_', ' ')}</span>
-                        <br />
 
-                        <div style={{textAlign:'center', width:'100%'}}>
-                        <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px', textAlign:'center' }}
-                                            onClick={() => {
-                                                navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.triviabattle.io/'+category );
-                                                setCopySuccess('Copied!')
-                                            }}> <Button>Copy Challenge Link</Button></div><div>{copySuccess}</div>
-                        </div>
+                   
                         
                     </Modal.Title>
                 </Modal.Header>
@@ -60,13 +53,20 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
          
                     </div>)
                 })}
+                
                      </Modal.Body>
                 <Modal.Footer style={{justifyContent:'space-evenly', flexDirection:'row'}}>
 
                 <Button onClick={() => navigate('/stats')} style={{ width: '45%' }}>My Stats</Button>
 
                     <Button onClick={() => navigate('/')} style={{ width: '45%' }}>Go home</Button>
-
+                    <div style={{textAlign:'center', width:'100%', marginTop:'10px'}}>
+                        <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px', textAlign:'center' }}
+                                            onClick={() => {
+                                                navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.triviabattle.io/'+category );
+                                                setCopySuccess('Copied!')
+                                            }}> <Button>Copy Challenge Link</Button></div><div>{copySuccess}</div>
+                        </div>
                 </Modal.Footer>
             </Modal>
              
