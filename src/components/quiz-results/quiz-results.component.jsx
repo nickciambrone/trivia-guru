@@ -57,7 +57,7 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
                 <div>
                   {Object.keys(quizResults).map((day,ind)=>{
                     return (<div>
-{quizResults[day][category].length>1 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}>{monthMapper(day.replaceAll('/','-'))}: <b style={{marginLeft:'4px'}}>{ quizResults[day][category].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })+'/10'}</b> </Card.Body></Card>      :''                 } {/* {Object.keys(quizResults[day]).map((cat, inde)=>{
+{quizResults[day][category].length>1 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}>{day.replaceAll('/','-')}: <b style={{marginLeft:'4px'}}>{ quizResults[day][category].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })+'/10'}</b> </Card.Body></Card>      :''                 } {/* {Object.keys(quizResults[day]).map((cat, inde)=>{
                             return Object.keys(quizResults[day][cat]).map((subCat,inex)=>  <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}> {day.replaceAll('/','-')}:<b style={{marginLeft:'8px'}}>{ quizResults[day][cat].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10</b> </Card.Body></Card>)
                         })} */}
          
@@ -69,7 +69,7 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
                     return (<div>
                         
                          {Object.keys(quizResults[day]).map((cat, inde)=>{
-                            return Object.keys(quizResults[day][cat]).map((subCat,inex)=>subCat == category ? quizResults[day][cat][subCat].length>0 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}> {monthMapper(day.replaceAll('/','-'))}:<b style={{marginLeft:'4px'}}>{ quizResults[day][cat][subCat].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10</b> </Card.Body></Card>:'':'')
+                            return Object.keys(quizResults[day][cat]).map((subCat,inex)=>subCat == category ? quizResults[day][cat][subCat].length>0 ? <Card><Card.Body style={{paddingTop:'5px', paddingBottom:'5px'}}> {day.replaceAll('/','-')}:<b style={{marginLeft:'4px'}}>{ quizResults[day][cat][subCat].reduce((acc, curr) => { return curr == true ? acc + 1 : acc })}/10</b> </Card.Body></Card>:'':'')
                         })}
          
                     </div>)
