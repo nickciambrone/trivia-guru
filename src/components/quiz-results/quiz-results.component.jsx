@@ -19,15 +19,15 @@ export const QuizResults = ({done, category, quizResults, relevantQuizResults}) 
         <div className = 'quiz-results'>
                 <Modal show={done}  >
                 <Modal.Header >
-                    <Modal.Title>  Category: <span style={{ color: '#0e6efd' }}>{category.replace('_', ' ')}</span>
+                    <Modal.Title style={{width:'100%'}}>  <span style={{ color: '#0e6efd', marginBottom:'2px' }}><span style={{color:'black'}}>Category:</span> {category.replace('_', ' ')}</span>
                         <br />
-                       
-                        <div>
-                        <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px' }}
+
+                        <div style={{textAlign:'center', width:'100%'}}>
+                        <div style={{ cursor: 'pointer', color: '#0d6efd', marginTop: '2px', textAlign:'center' }}
                                             onClick={() => {
                                                 navigator.clipboard.writeText('I scored '+relevantScore+'/10 today in '+category.replaceAll('_',' ')+', can you beat it?\nhttps://www.triviabattle.io/'+category );
                                                 setCopySuccess('Copied!')
-                                            }}> Copy Challenge Link</div><div>{copySuccess}</div>
+                                            }}> <Button>Copy Challenge Link</Button></div><div>{copySuccess}</div>
                         </div>
                         
                     </Modal.Title>
